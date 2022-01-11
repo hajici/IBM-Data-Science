@@ -29,7 +29,11 @@ app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
 
 
 
-                                dcc.Dropdown(id='site_dropdown',options=lsites,placeholder='Select a Launch Site here', searchable = True , value = 'All Sites'),
+                                dcc.Dropdown(id='site_dropdown',
+                                             options=lsites,
+                                             placeholder='Select a Launch Site here', 
+                                             searchable = True , 
+                                             value = 'All Sites'),
                                 html.Br(),
 
 
@@ -84,7 +88,7 @@ def update_graph(site_dropdown):
 def update_scattergraph(site_dropdown,payload_slider):
     if site_dropdown == 'All Sites':
         low, high = payload_slider
-        df  = spacex_df
+        df = spacex_df
         mask = (df['Payload Mass (kg)'] > low) & (df['Payload Mass (kg)'] < high)
         fig = px.scatter(
             df[mask], x="Payload Mass (kg)", y="class",
@@ -93,7 +97,7 @@ def update_scattergraph(site_dropdown,payload_slider):
             hover_data=['Payload Mass (kg)'])
     else:
         low, high = payload_slider
-        df  = spacex_df.loc[spacex_df['Launch Site'] == site_dropdown]
+        df = spacex_df.loc[spacex_df['Launch Site'] == site_dropdown]
         mask = (df['Payload Mass (kg)'] > low) & (df['Payload Mass (kg)'] < high)
         fig = px.scatter(
             df[mask], x="Payload Mass (kg)", y="class",
