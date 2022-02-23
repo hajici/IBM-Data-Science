@@ -74,7 +74,7 @@ app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
 # Add a callback function for `site-dropdown` as input, `success-pie-chart` as output
 @app.callback(
      Output(component_id='success-pie-chart',component_property='figure'),
-     [Input(component_id='site_dropdown',component_property='value')]
+     [Input(component_id='site-dropdown',component_property='value')]
 )
 def update_graph(site_dropdown):
     if (site_dropdown == 'All'):
@@ -88,7 +88,7 @@ def update_graph(site_dropdown):
 # Add a callback function for `site-dropdown` and `payload-slider` as inputs, `success-payload-scatter-chart` as output
 @app.callback(
      Output(component_id='success-payload-scatter-chart',component_property='figure'),
-     [Input(component_id='site_dropdown',component_property='value'),Input(component_id="payload_slider", component_property="value")]
+     [Input(component_id='site-dropdown',component_property='value'),Input(component_id="payload_slider", component_property="value")]
 )
 def update_scattergraph(site_dropdown,payload_slider):
     if site_dropdown == 'All':
